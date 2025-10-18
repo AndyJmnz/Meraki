@@ -1,0 +1,188 @@
+/* ============================================
+   ESTILOS GENERALES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 50px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #666;
+    padding: 10px 25px;
+    border: 1px solid #999;
+    border-radius: 25px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:first-child,
+.nav-links a:hover {
+    background-color: #5a6b5e;
+    color: white;
+    border-color: #5a6b5e;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero {
+    display: flex;
+    min-height: calc(100vh - 100px);
+}
+
+.hero-content {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Placeholder para la imagen del edificio */
+.building-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 50%, #6a6a6a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 14px;
+}
+
+/* ============================================
+   TIPOGRAFÍA
+   ============================================ */
+h1 {
+    font-size: 72px;
+    font-weight: 300;
+    color: #333;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #7a8b7e;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.cta-button:hover {
+    background-color: #5a6b5e;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 56px;
+    }
+
+    .hero-image {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .hero-content {
+        padding: 30px 20px;
+    }
+}
