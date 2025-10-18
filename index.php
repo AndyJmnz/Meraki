@@ -32,17 +32,15 @@
                 <img src="img/ImagenPortada1.png" alt="Edificio moderno">
             </div>
         </div>
-
-        <div class="about-word">ABOUT</div>
+        <div class="about-title">ABOUT</div>
         <!-- Nueva sección dividida -->
         <section class="about-section">
             <div class="about-left">
-                <h2 class="subtitle2">GRUPO MERAKI</h2>
-                <p>Somos Grupo Meraki BTO, consultoría especializada en la Gestión 360 de Proyectos Inmobiliarios. Con sede en Guadalajara, operamos con la filosofia</p>
-                <p><b>"Made with passion".</b></p>
+                <div class="subtitle2">GRUPO <b>MERAKI</b></div>
+                <p>Somos Grupo Meraki BTO, consultoría especializada en la Gestión 360 de Proyectos Inmobiliarios. Con sede en Guadalajara, operamos con la filosofia.</p>
+                <b>"Made with passion".</b>
                 <p>Nuestro compromiso es ofrecer asesoría integral que abarca desde la conceptualización inicial hasta la ejecución exitosa de tu proyecto. No solo coordinamos procesos; infundimos alma y creatividad en cada desarrollo.</p>
             </div>
-            
             <div class="about-divider"></div>
               <div class="about-right">
                 <h2>Nos especializamos</h2>                
@@ -71,9 +69,49 @@
                 </div>
             </div>
         </section>
-         <section class="content-section">
-            <h2>Nuestros Servicios</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <!-- Nueva sección con imagen izquierda y contenido derecho -->
+        <section class="image-content-section-mision">
+            <div class="section-image-mision">
+                <img src="img/meraki1.png" alt="Nuestro trabajo">
+            </div>
+            <div class="section-content-mision">
+                <div class="section-title-mision">MISIÓN</div>
+                <p>Nuestra Misión es ofrecer una consultoría integral y apasionada en el desarrollo de proyectos inmobiliarios, asegurando la Gestión 360 en cada etapa. Nos dedicamos a transformar visiones de negocio en realidades sólidas y rentables, brindando certeza legal y financiera a través de la experiencia, la innovación y la máxima calidad en la ejecución.</p>
+            </div>
+        </section>
+        <!-- Nueva sección con contenido izquierdo e imagen derecha -->
+        <section class="image-content-section-vision">
+            <div class="section-content-vision">
+                <div class="section-title-vision">VISIÓN</div>
+                <p>Nuestra Visión es consolidarnos como el socio consultor indispensable para el desarrollo inmobiliario en la región. Buscamos ser reconocidos por la solidez y seguridad que ofrecemos, distinguiéndonos por nuestra capacidad de simplificar la complejidad de los proyectos, garantizar su viabilidad legal y financiera, y asegurar la máxima rentabilidad para cada uno de nuestros clientes.</p>
+            </div>
+            <div class="section-image-vision">
+                <img src="img/meraki2.png" alt="Nuestra visión">
+            </div>
+        </section>
+
+        <!-- Nueva sección de objetivos -->
+        <section class="objetivos-section">
+            <div class="objetivos-image">
+                <img src="img/meraki3.png" alt="Nuestros objetivos">
+            </div>
+            <div class="objetivos-content">
+                <div class="objetivos-title">OBJETIVOS</div>                
+                <div class="objetivos-grid">
+                    <div class="objetivo-item">
+                        <div class="objetivo-bullet">•</div>
+                        <p>Nos enfocamos en la viabilidad integral de cada desarrollo: garantizar el 100% de cumplimiento legal y la máxima rentabilidad financiera. </p>
+                    </div>
+                    <div class="objetivo-item">
+                        <div class="objetivo-bullet">•</div>
+                        <p>Buscamos superar las expectativas del cliente con una gestión rigurosa y apasionada, para consolidarnos como su socio estratégico de confianza.</p>
+                    </div>
+                    <div class="objetivo-item objetivo-full">
+                        <div class="objetivo-bullet">•</div>
+                        <p>Impulsar el diseño arquitectónico sostenible e innovador, integrando soluciones creativas y tecnológicamente avanzadas que optimicen los recursos, respeten el entorno y aporten valor estético y funcional a cada proyecto.</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </body>
