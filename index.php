@@ -16,8 +16,7 @@
                 <a href="contacto.php">Contacto</a>
             </div>
             <div class="logo">
-                <!-- AQUÍ VA TU LOGO/ICONO -->
-                <!-- <img src="ruta/a/tu/logo.png" alt="Logo"> -->
+                <img src="img/LogoSinNombre.png" alt="Logo">
             </div>
         </nav>
 
@@ -30,13 +29,7 @@
             </div>
             
             <div class="hero-image">
-                <!-- AQUÍ VA LA IMAGEN DEL EDIFICIO -->
-                <!-- <img src="ruta/a/tu/edificio.jpg" alt="Edificio moderno"> -->
-                
-                <!-- Placeholder temporal - eliminar cuando agregues tu imagen -->
-                <div class="building-placeholder">
-                    [Imagen del edificio aquí]
-                </div>
+                <img src="img/ImagenPortada1.png" alt="Edificio moderno">
             </div>
         </div>
     </div>
