@@ -551,6 +551,120 @@
                 grid-column: 1 / -1;
             }
         }
+
+        /* LIGHTBOX MODAL */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 20px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .lightbox-nav:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive lightbox */
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: -50px;
+                right: 10px;
+                font-size: 35px;
+            }
+
+            .lightbox-nav {
+                font-size: 25px;
+                padding: 15px 10px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -613,27 +727,27 @@
 
                 <div class="proyectos-grid">
                     <!-- Proyecto 1 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 0)">
                         <img src="img/meraki2.png" alt="Proyecto 1" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 2 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 1)">
                         <img src="img/meraki2.png" alt="Proyecto 2" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 3 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 2)">
                         <img src="img/meraki2.png" alt="Proyecto 3" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 4 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 3)">
                         <img src="img/meraki2.png" alt="Proyecto 4" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 5 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 4)">
                         <img src="img/meraki2.png" alt="Proyecto 5" class="proyecto-image">
                     </div>
                 </div>
@@ -654,27 +768,27 @@
 
                 <div class="proyectos-grid-centrado">
                     <!-- Proyecto 1 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 5)">
                         <img src="img/meraki2.png" alt="Proyecto 1" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 2 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 6)">
                         <img src="img/meraki2.png" alt="Proyecto 2" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 3 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 7)">
                         <img src="img/meraki2.png" alt="Proyecto 3" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 4 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 8)">
                         <img src="img/meraki2.png" alt="Proyecto 4" class="proyecto-image">
                     </div>
 
                     <!-- Proyecto 5 -->
-                    <div class="proyecto-card">
+                    <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 9)">
                         <img src="img/meraki2.png" alt="Proyecto 5" class="proyecto-image">
                     </div>
                 </div>
@@ -682,8 +796,93 @@
         </div>
     </section>
 
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
+            <img id="lightboxImage" class="lightbox-image" src="" alt="Imagen ampliada">
+            <button class="lightbox-nav lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Array de todas las imágenes de proyectos
+        const projectImages = [
+            'img/meraki2.png', // Proyecto 1 - imagen 1
+            'img/meraki2.png', // Proyecto 1 - imagen 2
+            'img/meraki2.png', // Proyecto 1 - imagen 3
+            'img/meraki2.png', // Proyecto 1 - imagen 4
+            'img/meraki2.png', // Proyecto 1 - imagen 5
+            'img/meraki2.png', // Proyecto 2 - imagen 1
+            'img/meraki2.png', // Proyecto 2 - imagen 2
+            'img/meraki2.png', // Proyecto 2 - imagen 3
+            'img/meraki2.png', // Proyecto 2 - imagen 4
+            'img/meraki2.png'  // Proyecto 2 - imagen 5
+        ];
+
+        let currentImageIndex = 0;
+
+        function openLightbox(imageSrc, index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImage');
+            
+            img.src = projectImages[currentImageIndex];
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightboxModal' || event.target.classList.contains('lightbox-close')) {
+                const modal = document.getElementById('lightboxModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restaurar scroll
+                event.stopPropagation();
+            }
+        }
+
+        function changeImage(direction, event) {
+            event.stopPropagation();
+            currentImageIndex += direction;
+            
+            // Loop: si llega al final, vuelve al inicio y viceversa
+            if (currentImageIndex >= projectImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = projectImages.length - 1;
+            }
+            
+            const img = document.getElementById('lightboxImage');
+            img.src = projectImages[currentImageIndex];
+        }
+
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('lightboxModal');
+                if (modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
+        // Navegación con flechas del teclado
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('lightboxModal');
+            if (modal.classList.contains('active')) {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1, event);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1, event);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
 
