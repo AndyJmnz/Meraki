@@ -665,6 +665,71 @@
                 right: 10px;
             }
         }
+
+        /* Overlay con información */
+        .proyecto-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(90, 107, 94, 0.95); /* Verde oscuro con transparencia */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+        }
+
+        .proyecto-card:hover .proyecto-overlay {
+            opacity: 1;
+        }
+
+        .proyecto-overlay-title {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 500;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .proyecto-overlay-description {
+            font-size: clamp(13px, 1.5vw, 15px);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        /* Línea decorativa */
+        .proyecto-overlay-divider {
+            width: 60px;
+            height: 2px;
+            background-color: #fff;
+            margin: 15px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .proyecto-overlay {
+                padding: 20px;
+            }
+
+            .proyecto-overlay-title {
+                margin-bottom: 10px;
+            }
+
+            .proyecto-overlay-divider {
+                width: 40px;
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -729,26 +794,61 @@
                     <!-- Proyecto 1 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 0)">
                         <img src="img/meraki2.png" alt="Proyecto 1" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Diseño Creativo</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Solución innovadora que combina estética y funcionalidad
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 2 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 1)">
                         <img src="img/meraki2.png" alt="Proyecto 2" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Desarrollo Web</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Plataforma digital moderna y responsive
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 3 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 2)">
                         <img src="img/meraki2.png" alt="Proyecto 3" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Branding Corporativo</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Identidad visual única y memorable
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 4 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 3)">
                         <img src="img/meraki2.png" alt="Proyecto 4" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Marketing Digital</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Estrategia integral para resultados medibles
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 5 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 4)">
                         <img src="img/meraki2.png" alt="Proyecto 5" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Experiencia de Usuario</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Interfaces intuitivas centradas en el usuario
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -770,26 +870,61 @@
                     <!-- Proyecto 1 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 5)">
                         <img src="img/meraki2.png" alt="Proyecto 1" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Solución Innovadora</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Transformando ideas en realidad digital
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 2 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 6)">
                         <img src="img/meraki2.png" alt="Proyecto 2" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Diseño Arquitectónico</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Espacios que inspiran y conectan
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 3 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 7)">
                         <img src="img/meraki2.png" alt="Proyecto 3" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Estrategia Visual</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Comunicación efectiva a través del diseño
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 4 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 8)">
                         <img src="img/meraki2.png" alt="Proyecto 4" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Contenido Creativo</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Historias que cautivan y conectan
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Proyecto 5 -->
                     <div class="proyecto-card" onclick="openLightbox('img/meraki2.png', 9)">
                         <img src="img/meraki2.png" alt="Proyecto 5" class="proyecto-image">
+                        <div class="proyecto-overlay">
+                            <h3 class="proyecto-overlay-title">Solución Digital</h3>
+                            <div class="proyecto-overlay-divider"></div>
+                            <p class="proyecto-overlay-description">
+                                Tecnología al servicio de la creatividad
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
