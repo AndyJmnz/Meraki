@@ -259,6 +259,298 @@
                 margin-top: 80px;
             }
         }
+
+        /* GALERÍA DE PROYECTOS */
+        .proyectos-galeria {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .galeria-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .galeria-header {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        
+        .galeria-title {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 100;
+            color: #333;
+            letter-spacing: clamp(2px, 0.5vw, 8px);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+
+        .galeria-description {
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Grid de Proyectos */
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        /* Layout desktop: header izquierda, grid derecha */
+        @media (min-width: 769px) {
+            .galeria-container {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 60px;
+                align-items: start;
+            }
+
+            .galeria-header {
+                text-align: left;
+                position: sticky;
+                top: 120px;
+            }
+
+            .galeria-description {
+                margin: 0;
+            }
+        }
+
+        .proyecto-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .proyecto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Quinta imagen ocupa todo el ancho */
+        .proyecto-card:nth-child(5) {
+            grid-column: 1 / -1;
+        }
+
+        /* Ocultar sexta imagen en desktop */
+        .proyecto-card:nth-child(6) {
+            display: none;
+        }
+
+        .proyecto-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        /* Imagen 5 más alta */
+        .proyecto-card:nth-child(5) .proyecto-image {
+            height: 450px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .proyectos-galeria {
+                padding: 60px 0;
+            }
+
+            .galeria-header {
+                margin-bottom: 40px;
+            }
+
+            .proyectos-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            /* En móvil, mostrar todas las imágenes */
+            .proyecto-card:nth-child(5) {
+                grid-column: auto;
+            }
+
+            .proyecto-card:nth-child(6) {
+                display: block;
+            }
+
+            .proyecto-image {
+                height: 280px;
+            }
+
+            .proyecto-card:nth-child(5) .proyecto-image {
+                height: 280px;
+            }
+
+            .proyecto-descripcion {
+                opacity: 1;
+                max-height: 200px;
+            }
+        }
+
+        /* SEGUNDO PROYECTO - CENTRADO */
+        .proyecto-centrado {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+            position: relative;
+        }
+
+        .proyecto-centrado-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .proyecto-centrado-header {
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .proyecto-centrado-header .galeria-description {
+            margin: 0 auto;
+        }
+
+        /* Grid centrado */
+        .proyectos-grid-centrado {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Layout desktop: imágenes alrededor del contenido central */
+        @media (min-width: 769px) {
+            .proyecto-centrado {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 120px 20px;
+                position: relative;
+            }
+
+            .proyecto-centrado .container {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                min-height: 80vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .proyecto-centrado-container {
+                position: relative;
+                z-index: 10;
+                max-width: 600px;
+                background-color: rgba(255, 255, 255, 0.98);
+                padding: 60px 50px;
+                border-radius: 12px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+                gap: 30px;
+            }
+
+            .proyectos-grid-centrado {
+                position: absolute;
+                top: -80px;
+                left: 0;
+                right: 0;
+                bottom: -80px;
+                width: 100%;
+                height: calc(100% + 160px);
+                display: block;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .proyectos-grid-centrado .proyecto-card {
+                pointer-events: all;
+            }
+
+            /* Imagen 1 - Superior Izquierda (Grande) */
+            .proyectos-grid-centrado .proyecto-card:nth-child(1) {
+                position: absolute;
+                top: 400px;
+                left: 620px;
+                width: 550px;
+            }
+
+            .proyectos-grid-centrado .proyecto-card:nth-child(1) .proyecto-image {
+                height: 260px;
+            }
+
+            /* Imagen 2 - Superior Derecha (Mediana) */
+            .proyectos-grid-centrado .proyecto-card:nth-child(2) {
+                position: absolute;
+                top: -130px;
+                left: 700px;
+                width: 400px;
+                height: 300px;
+            }
+
+            .proyectos-grid-centrado .proyecto-card:nth-child(2) .proyecto-image {
+                height: 320px;
+            }
+
+            /* Imagen 3 - Inferior Izquierda (Pequeña) */
+            .proyectos-grid-centrado .proyecto-card:nth-child(3) {
+                position: absolute;
+                top: 430px;
+                left: 20px;
+                width: 480px;
+            }
+
+            .proyectos-grid-centrado .proyecto-card:nth-child(3) .proyecto-image {
+                height: 260px;
+            }
+
+            /* Imagen 4 - Inferior Derecha (Extra Grande) */
+            .proyectos-grid-centrado .proyecto-card:nth-child(4) {
+                position: absolute;
+                top: -100px;
+                right: 750px;
+                width: 380px;
+            }
+
+            .proyectos-grid-centrado .proyecto-card:nth-child(4) .proyecto-image {
+                height: 220px;
+            }
+
+            /* Imagen 5 - Centrada abajo o arriba */
+            .proyectos-grid-centrado .proyecto-card:nth-child(5) {
+                position: absolute;
+                bottom: -50px;
+                right: 80%;
+                transform: translateX(-50%);
+                width: 420px;
+                display: block;
+            }
+
+            .proyectos-grid-centrado .proyecto-card:nth-child(5) .proyecto-image {
+                height: 280px;
+            }
+        }
+
+        /* Quinta imagen ocupa todo el ancho en móvil */
+        @media (max-width: 768px) {
+            .proyectos-grid-centrado .proyecto-card:nth-child(5) {
+                grid-column: 1 / -1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -303,6 +595,88 @@
                 </p>
                 <div class="hero-cta-button">
                     <a href="#proyectos-galeria" class="btn-custom">Ver más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE PROYECTOS -->
+    <section id="proyectos-galeria" class="proyectos-galeria">
+        <div class="container">
+            <div class="galeria-container">
+                <div class="galeria-header">
+                    <h2 class="galeria-title">PROYECTO</h2>
+                    <p class="galeria-description">
+                        This project represents the perfect blend of creativity, innovation, and functionality. Developed with a focus on user experience and practical design, it reflects our commitment to delivering solutions that make a real impact.
+                    </p>
+                </div>
+
+                <div class="proyectos-grid">
+                    <!-- Proyecto 1 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 1" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 2" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 3 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 3" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 4 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 4" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 5 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 5" class="proyecto-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEGUNDO PROYECTO - CENTRADO -->
+    <section class="proyecto-centrado">
+        <div class="container">
+            <div class="proyecto-centrado-container">
+                <div class="proyecto-centrado-header">
+                    <h2 class="galeria-title">PROYECTO 2</h2>
+                    <p class="galeria-description">
+                        This project represents the perfect blend of creativity, innovation, and functionality. Developed with a focus on user experience and practical design, it reflects our commitment to delivering solutions that make a real impact.
+                    </p>
+                </div>
+
+                <div class="proyectos-grid-centrado">
+                    <!-- Proyecto 1 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 1" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 2" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 3 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 3" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 4 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 4" class="proyecto-image">
+                    </div>
+
+                    <!-- Proyecto 5 -->
+                    <div class="proyecto-card">
+                        <img src="img/meraki2.png" alt="Proyecto 5" class="proyecto-image">
+                    </div>
                 </div>
             </div>
         </div>
