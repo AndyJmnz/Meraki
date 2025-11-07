@@ -23,7 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --text-gray: #666;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Albert Sans', sans-serif; background-color: #f5f5f5; overflow-x: hidden; }
+        body { 
+            font-family: 'Albert Sans', sans-serif; 
+            background-color: #f5f5f5; 
+            overflow-x: hidden; /* previene scroll horizontal global */
+            width: 100%;
+            min-width: 100vw;
+        }
 
         /* NAVBAR */
         .navbar { background-color: rgba(245,245,245,0.95) !important; backdrop-filter: blur(10px); padding: 1.5rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
@@ -32,7 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .logo-nav { width: 50px; height: 50px; }
 
         /* HERO */
-        .hero-section { min-height: 90vh; max-height: none; padding-top: 140px; padding-bottom: 0; position: relative; overflow: visible; }
+        .hero-section { 
+            min-height: 90vh; 
+            max-height: none; 
+            padding-top: 140px; 
+            padding-bottom: 0; 
+            position: relative; 
+            overflow: visible;
+            width: 100%;
+        }
         .hero-content { position: relative; z-index: 2; padding-top: 0; overflow: visible; }
         .hero-title { 
             font-size: clamp(56px, 10vw, 140px); 
@@ -53,23 +67,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .hero-title .title-main { display:block; white-space:nowrap; }
 
-        /* A STORY alineado al borde derecho del viewport */
+        /* A STORY alineado al borde derecho del viewport - SOLO DESKTOP */
         .hero-title .title-shift {
             display:block;
             white-space:nowrap;
             text-align:right;
-            width: 100vw;                    /* ocupa todo el ancho del viewport */
-            margin-left: calc(50% - 50vw);   /* centra el bloque de 100vw sobre el contenedor */
+        }
+
+        /* Desktop: extender a 100vw */
+        @media (min-width: 769px) {
+            .hero-title .title-shift {
+                width: 100vw;
+                margin-left: calc(50% - 50vw);
+                padding-right: 2vw;
+            }
         }
 
         @media (max-width: 992px) {
-            .hero-title .title-shift { width:100%; margin-left:0; }
+            .hero-title .title-shift { 
+                width:100%; 
+                margin-left:0; 
+                padding-right: 0;            /* quita el padding en móvil */
+            }
         }
         @media (max-width: 992px) {
-            .hero-title .title-shift {
-                margin-left:0;      /* en pantallas pequeñas el container ya es 100% */
-                width:100%;
-            }
+            .hero-title .title-shift { width:100%; margin-left:0; }
         }
         .hero-subtitle { 
             font-size: clamp(12px, 1.6vw, 14px); 
@@ -228,37 +250,103 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         /* MOBILE POLISH – solo afecta a móviles, desktop intacto */
         @media (max-width: 768px) {
-            .container { padding-left: 20px; padding-right: 20px; }
+            html, body {
+                width: 100%;
+                overflow-x: hidden;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container { 
+                padding-left: 20px; 
+                padding-right: 0; /* elimina padding derecho */
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            /* Elimina bordes del container dentro del hero */
+            .hero-section .container,
+            .hero-section .container *,
+            .hero-section .row,
+            .hero-section .row *,
+            .hero-section .col-lg-8,
+            .hero-section .col-lg-8 * {
+                border: none !important;
+                border-bottom: none !important;
+                box-shadow: none !important;
+            }
 
-            /* HERO – mantener proporciones similares a desktop y CENTRAR */
+            /* HERO – alineado a la DERECHA */
             .hero-section { 
                 min-height: auto !important;
                 padding-top: 120px;
                 padding-bottom: 0 !important;
-                text-align: center; /* centra todo el hero */
+                text-align: right;
+                overflow-x: hidden;
+                border: none !important;
+                width: 100%;
+                margin: 0;
+                padding-left: 0;
+                padding-right: 0;
             }
             .hero-content {
                 display: flex;
                 flex-direction: column;
-                align-items: center; /* centra los elementos hijos */
+                align-items: flex-end;
+                border: none !important;
+                padding-bottom: 0 !important;
+                width: 100%;
+                padding-right: 20px; /* mantiene espacio para el texto */
             }
             .hero-title { 
-                font-size: clamp(34px, 12vw, 72px); 
-                letter-spacing: 2px;
-                line-height: .95;
-                text-align: center;
+                font-size: clamp(28px, 9vw, 56px);
+                letter-spacing: 1px;
+                line-height: 1.1;
+                text-align: right;
+                overflow-x: hidden;
+                margin-bottom: 20px;
+                border: none !important;
+                padding-bottom: 0 !important;
+            }
+            /* Elimina TODOS los pseudo-elementos y elementos hijos */
+            .hero-title *,
+            .hero-title::before,
+            .hero-title::after,
+            .hero-title .title-main,
+            .hero-title .title-main::before,
+            .hero-title .title-main::after,
+            .hero-title .title-shift,
+            .hero-title .title-shift::before,
+            .hero-title .title-shift::after {
+                content: none !important;
+                display: inline !important;
+                border: none !important;
+                border-bottom: none !important;
+                background: none !important;
+                background-image: none !important;
+                box-shadow: none !important;
+                text-decoration: none !important;
+                outline: none !important;
             }
             .hero-title .title-main,
             .hero-title .title-shift { 
-                line-height: 1;
-                text-align: center; /* ambas líneas centradas */
-                width: 100%;
-                margin-left: 0;
+                line-height: 1.1;
+                text-align: right;
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-bottom: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+            .hero-cta,
+            .hero-cta * { 
+                border: none !important;
+                border-bottom: none !important;
             }
             .hero-cta { 
                 top: 0; 
                 margin-top: 20px;
-                text-align: center;
+                text-align: right;
                 max-width: 100%;
             }
             .hero-subtitle { 
@@ -266,129 +354,225 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 max-width: 90%; 
                 letter-spacing: 1.5px;
                 margin-left: auto;
-                margin-right: auto; /* centra el párrafo */
+                margin-right: 0;
             }
             .btn-custom { 
                 padding: 12px 28px; 
                 font-size: 11px;
                 margin-left: auto;
-                margin-right: auto; /* centra el botón */
+                margin-right: 0;
             }
             .hero-image { 
                 position: relative;
                 right: 0;
                 left: 0;
                 bottom: 0 !important;
-                width: 100%;
+                width: 100vw; /* usa todo el ancho del viewport */
                 margin-top: 16px;
+                margin-left: 0; /* sin compensación izquierda */
+                margin-right: 0; /* sin compensación derecha */
                 opacity: 1;
             }
-
-            /* CONTACT – CENTRADO */
-            #contacto { 
-                margin-top: 0; 
-                padding: 80px 0 70px;
-                text-align: center; /* centra todo el contacto */
-            }
-            .contact-wrapper .row { 
-                row-gap: 3rem;
-                justify-content: center; /* centra las columnas */
-            }
-            .contact-intro { 
-                max-width: 100%;
-                text-align: center; /* texto centrado */
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .contact-intro h3 { 
-                font-size: clamp(24px, 5vw, 32px);
-                font-weight: 500;
-                text-align: center;
-            }
-            .contact-intro p { 
-                font-size: 13px; 
-                line-height: 1.6;
-                font-weight: 300;
-                text-align: center;
-            }
-            .contact-form-box { 
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .contact-form-box label { 
-                font-size: 13px;
-                font-weight: 400;
-                text-align: left; /* mantiene labels a la izq dentro del form */
+            .hero-image img {
                 display: block;
-            }
-            .contact-form-box .form-control { 
-                height: 44px; 
-                font-size: 14px;
-                border-radius: 22px;
-            }
-            .contact-form-box textarea.form-control { 
-                height: 160px; 
-                font-size: 14px;
-                border-radius: 24px;
-            }
-            .contact-form-box .btn-custom { 
-                width: 180px; 
-                padding: 13px 26px; 
-                font-size: 12px;
-                letter-spacing: 1px;
-                margin-left: auto;
-                margin-right: auto; /* centra el botón de enviar */
-            }
-            .phone-deco { display: none; }
-
-            /* FOOTER – CENTRADO */
-            .footer { text-align: center; }
-            .footer-logo { 
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .footer-title, .footer-subtitle, .footer-rights {
-                text-align: center;
+                margin-left: auto; /* alinea la imagen a la derecha */
+                margin-right: 0; /* pegada al borde derecho */
+                max-width: 85%; /* controla el tamaño de la imagen */
+                width: 85%; /* mantiene el tamaño controlado */
+                height: auto;
             }
         }
 
         @media (max-width: 576px) {
-            .hero-title { font-size: clamp(30px, 11vw, 56px); }
+            .hero-title { 
+                font-size: clamp(26px, 8.5vw, 48px); /* más pequeño en móviles muy pequeños */
+                letter-spacing: 0.5px;
+            }
             #contacto { padding: 60px 0 50px; }
-        }
-
-        @media (max-width: 380px) {
-            .contact-form-box .btn-custom { width: 100%; }
-        }
-
-        /* MOBILE – que #contacto inicie justo debajo de la imagen del hero */
-        @media (max-width: 576px) {
-            .hero-section { padding-bottom: 0; }
-            .hero-image {
-                position: relative;      /* saca la imagen del posicionamiento absoluto */
-                bottom: 0 !important;    /* ignora offsets previos */
-                right: 0;
-                left: 0;
-                width: 100%;
-                margin-top: 12px;        /* pequeño respiro bajo el título */
-            }
-            #contacto { margin-top: 0; } /* sin solapes ni huecos extra */
-        }
-
-        /* MÓVIL — reduce altura del hero y elimina el espacio extra antes de #contacto */
-        @media (max-width: 576px) {
-            .hero-section {
+            
+            .hero-section { 
+                padding-bottom: 0;
                 min-height: auto !important;   /* sin altura forzada */
                 padding-top: 120px;            /* mantiene aire bajo la navbar */
-                padding-bottom: 0 !important;  /* quita espacio extra al final */
             }
             .hero-image {
                 position: relative;
                 bottom: 0 !important;
-                right: 0; left: 0;
-                width: 100%;
+                right: 0; 
+                left: 0;
+                width: 100vw;
                 margin-top: 8px;               /* pequeño respiro bajo el título */
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .hero-image img {
+                margin-right: 0; /* imagen pegada al borde derecho */
+                max-width: 90%; /* un poco más grande en móviles pequeños */
+                width: 90%;
+            }
+            #contacto { margin-top: 0; padding-top: 56px; } /* arranca justo después de la imagen */
+        }
+
+        /* MOBILE POLISH – solo afecta a móviles, desktop intacto */
+        @media (max-width: 768px) {
+            html, body {
+                width: 100%;
+                overflow-x: hidden;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container { 
+                padding-left: 20px; 
+                padding-right: 20px;
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            /* Elimina bordes del container dentro del hero */
+            .hero-section .container,
+            .hero-section .container *,
+            .hero-section .row,
+            .hero-section .row *,
+            .hero-section .col-lg-8,
+            .hero-section .col-lg-8 * {
+                border: none !important;
+                border-bottom: none !important;
+                box-shadow: none !important;
+            }
+
+            /* HERO – alineado a la DERECHA */
+            .hero-section { 
+                min-height: auto !important;
+                padding-top: 120px;
+                padding-bottom: 0 !important;
+                text-align: right;
+                overflow-x: hidden;
+                border: none !important;
+                width: 100%;
+                margin: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                border: none !important;
+                padding-bottom: 0 !important;
+                width: 100%;
+            }
+            .hero-title { 
+                font-size: clamp(28px, 9vw, 56px);
+                letter-spacing: 1px;
+                line-height: 1.1;
+                text-align: right;
+                overflow-x: hidden;
+                margin-bottom: 20px;
+                border: none !important;
+                padding-bottom: 0 !important;
+            }
+            /* Elimina TODOS los pseudo-elementos y elementos hijos */
+            .hero-title *,
+            .hero-title::before,
+            .hero-title::after,
+            .hero-title .title-main,
+            .hero-title .title-main::before,
+            .hero-title .title-main::after,
+            .hero-title .title-shift,
+            .hero-title .title-shift::before,
+            .hero-title .title-shift::after {
+                content: none !important;
+                display: inline !important;
+                border: none !important;
+                border-bottom: none !important;
+                background: none !important;
+                background-image: none !important;
+                box-shadow: none !important;
+                text-decoration: none !important;
+                outline: none !important;
+            }
+            .hero-title .title-main,
+            .hero-title .title-shift { 
+                line-height: 1.1;
+                text-align: right;
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-bottom: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+            .hero-cta,
+            .hero-cta * { 
+                border: none !important;
+                border-bottom: none !important;
+            }
+            .hero-cta { 
+                top: 0; 
+                margin-top: 20px;
+                text-align: right;
+                max-width: 100%;
+            }
+            .hero-subtitle { 
+                font-size: 11px; 
+                max-width: 90%; 
+                letter-spacing: 1.5px;
+                margin-left: auto;
+                margin-right: 0;
+            }
+            .btn-custom { 
+                padding: 12px 28px; 
+                font-size: 11px;
+                margin-left: auto;
+                margin-right: 0;
+            }
+            .hero-image { 
+                position: relative;
+                right: 0;
+                left: 0;
+                bottom: 0 !important;
+                width: 100vw; /* usa todo el ancho del viewport */
+                margin-top: 16px;
+                margin-left: -20px; /* compensa el padding izquierdo del container */
+                margin-right: -20px; /* compensa el padding derecho del container */
+                opacity: 1;
+            }
+            .hero-image img {
+                display: block;
+                margin-left: auto; /* alinea la imagen a la derecha */
+                margin-right: 0; /* imagen pegada al borde derecho */
+                max-width: 85%; /* controla el tamaño de la imagen */
+                width: 85%; /* mantiene el tamaño controlado */
+                height: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title { 
+                font-size: clamp(26px, 8.5vw, 48px); /* más pequeño en móviles muy pequeños */
+                letter-spacing: 0.5px;
+            }
+            #contacto { padding: 60px 0 50px; }
+            
+            .hero-section { 
+                padding-bottom: 0;
+                min-height: auto !important;   /* sin altura forzada */
+                padding-top: 120px;            /* mantiene aire bajo la navbar */
+            }
+            .hero-image {
+                position: relative;
+                bottom: 0 !important;
+                right: 0; 
+                left: 0;
+                width: 100vw;
+                margin-top: 8px;               /* pequeño respiro bajo el título */
+                margin-left: -20px;
+                margin-right: -20px;
+            }
+            .hero-image img {
+                margin-right: 0; /* imagen pegada al borde derecho */
+                max-width: 90%; /* un poco más grande en móviles pequeños */
+                width: 90%;
             }
             #contacto { margin-top: 0; padding-top: 56px; } /* arranca justo después de la imagen */
         }
