@@ -650,6 +650,75 @@ nav {
 }
 
 /* ============================================
+   PROYECTOS HERO SECTION
+   ============================================ */
+.proyectos-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/proyectos-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.proyectos-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.proyectos-hero-title {
+    position: relative;
+    z-index: 2;
+    font-size: 120px;
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 0 30px;
+}
+
+/* Responsive - Proyectos Hero */
+@media (max-width: 1024px) {
+    .proyectos-hero-title {
+        font-size: 80px;
+        letter-spacing: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .proyectos-hero {
+        min-height: 70vh;
+    }
+    
+    .proyectos-hero-title {
+        font-size: 56px;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .proyectos-hero {
+        min-height: 60vh;
+    }
+    
+    .proyectos-hero-title {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 1024px) {
