@@ -69,8 +69,8 @@
         /* HERO SECTION SERVICIOS */
         .hero-servicios {
             position: relative;
-            height: 200vh;
-            max-height: 1000px;
+            height: 100vh;
+            max-height: 800px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -90,35 +90,63 @@
             opacity: 0.9;
         }
 
+        .hero-image-left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 45%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 3;
+            display: block;
+        }
+
+        .hero-image-left img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left center;
+        }
+
         .hero-content-servicios {
             position: relative;
             z-index: 2;
             text-align: right;
-            padding: 0 8%;
-            max-width: 60%;
+            padding: 0 5% 20px;
+            margin-left: 22%;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: auto;
         }
 
         .hero-title-servicios {
-            font-size: clamp(60px, 10vw, 120px);
-            font-weight: 100;
+            font-size: clamp(55px, 15vw, 122px);
+            font-weight: 200;
             letter-spacing: 0.05em;
-            line-height: 1;
+            line-height: 0.95;
             color: #333;
-            margin-bottom: 20px;
-            margin-top: 70px;
+            margin-bottom: 25px;
+            text-align: right;
+            max-width: 900px;
         }
 
         .hero-subtitle-servicios {
-            font-size: clamp(14px, 2vw, 18px);
+            font-size: clamp(12px, 1.5vw, 16px);
             font-weight: 300;
             color: var(--text-gray);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            text-align: right;
+            max-width: 600px;
         }
 
         .btn-conoce-mas {
             padding: 12px 30px;
+            margin-bottom: 20px;
             background-color: var(--light-green);
             color: white;
             border-radius: 25px;
@@ -141,22 +169,25 @@
         /* SERVICIOS GRID */
         .servicios-section {
             padding: 80px 0;
+            padding-left: 50px;
             background-color: white;
         }
 
         .servicio-card {
             position: relative;
-            padding: 40px;
-            margin-bottom: 40px;
+            padding: 30px 25px;
+            margin: 20px 0 40px;
             transition: all 0.4s ease;
-            background-color: var(--light-bg);
             border-radius: 0;
+            height: 100%;
         }
 
-        .servicio-card:hover {
-            background-color: white;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
+        .col-servicio {
+            display: flex;
+        }
+
+        .col-servicio .servicio-card {
+            width: 100%;
         }
 
         .servicio-title {
@@ -176,9 +207,9 @@
         }
 
         .servicio-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
             display: block;
             filter: grayscale(100%);
             transition: all 0.3s ease;
@@ -187,6 +218,90 @@
         .servicio-card:hover .servicio-icon {
             filter: grayscale(0%);
             transform: scale(1.1);
+        }
+
+        .servicios-destacados {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background: linear-gradient(120deg, #f4f7f6 0%, #e7f1ef 100%);
+            overflow: hidden;
+            padding: 120px 0;
+        }
+
+        /* Imagen lateral (similar a portada) */
+        .imagen-lateral {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
+        }
+
+        .imagen-lateral img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(85%);
+            transition: transform 0.5s ease;
+        }
+
+
+        /* Contenido a la derecha */
+        .contenido-servicios {
+            position: relative;
+            z-index: 2;
+            width: 50%;
+            padding-left: 80px;
+            padding-right: 5%;
+        }
+
+        /* Tarjetas traslapadas */
+        .contenido-servicios .servicio-card {
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.3s ease;
+            background: #edf4f2;
+        }
+
+        .contenido-servicios .card-uno {
+            transform: translateY(10px);
+            transform: translateX(-100px);
+            z-index: 3;
+        }
+
+        .contenido-servicios .card-dos {
+            margin-top: 20px; /* traslape */
+            transform: translateX(90px);
+            z-index: 2;
+        }
+
+        /* IMAGEN LATERAL DE SERVICIOS */
+        .hero-image-right {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 700px;
+            overflow: hidden;
+            position: sticky;
+            top: 80px;
+        }
+
+        .hero-image-right img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-image-right-wrapper {
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
         /* SECCIONES CON IMAGEN */
@@ -254,45 +369,85 @@
 
         /* SERVICIOS ADICIONALES */
         .servicios-adicionales {
-            background-color: var(--light-bg);
-            padding: 80px 0;
+            padding: 80px 0 10px 0;
+            background:#fff;
         }
 
-        .section-title {
-            font-size: clamp(36px, 6vw, 56px);
-            font-weight: 100;
-            text-align: center;
-            color: #333;
-            margin-bottom: 60px;
-            letter-spacing: 0.05em;
+        .servicios-adicionales .wrap-servicios {
+            display: grid;
+            gap: 40px 40px;
         }
 
-        .servicio-item {
-            background-color: white;
-            padding: 40px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
+        .edificio-image-right {
+            width: 100%;
+            height: 100%;
+            min-height: 650px;
+            overflow: hidden;
+        }
+        .edificio-image-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display:block;
         }
 
-        .servicio-item:hover {
-            border-left-color: var(--light-green);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transform: translateX(10px);
+        @media (min-width:992px) {
+            .servicios-adicionales .layout {
+                display:grid;
+                grid-template-columns: 1fr 40vw; /* servicios | imagen */
+                align-items:start;
+                gap:60px;
+            }
+            .servicios-adicionales .wrap-servicios {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+            .servicios-adicionales .servicio-item {
+                margin:0;
+                background:transparent;
+                border-left: 2px solid var(--light-green);
+                padding: 30px 0 0 0;
+            }
         }
 
-        .servicio-item-title {
-            font-size: clamp(18px, 2.5vw, 22px);
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
+        @media (max-width:991.98px) {
+            .servicios-adicionales .layout {
+                display:block;
+            }
+            .servicios-adicionales .wrap-servicios {
+                display:block;
+                padding:30px, 0, 0,0;
+            }
+            .servicios-adicionales .servicio-item {
+                margin-bottom:35px;
+                background: #fff;
+                border-left: 2px solid var(--light-green);
+            }
+            .edificio-image-right {
+                min-height: auto;
+                height:auto;
+                margin-top:10px;
+            }
+            .edificio-image-right img {
+                height:auto;
+                object-fit:contain;
+                max-width:420px;
+                margin:0 auto;
+                display:block;
+            }
         }
 
-        .servicio-item-description {
-            font-size: clamp(14px, 1.8vw, 16px);
-            font-weight: 300;
-            color: var(--text-gray);
-            line-height: 1.6;
+        /* Sección servicio extra (el 5° separado) */
+        .servicio-extra {
+            padding: 32px 0 8px; /* menos arriba y casi nada abajo */
+            margin-bottom: 0;
+            background:#f5f5f5;
+        }
+        .servicio-extra .servicio-item {
+            max-width:900px;
+            margin:0 auto;
+            border-left:4px solid var(--primary-green);
+            background:#fff;
         }
 
         /* FOOTER */
@@ -362,15 +517,56 @@
 
         /* RESPONSIVE */
         @media (max-width: 992px) {
-            .hero-servicios::before {
+            .hero-servicios {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                justify-content: flex-start;
+                padding-top: 100px;
+            }
+
+            .hero-image-left {
+                position: relative;
                 width: 100%;
-                opacity: 0.3;
+                height: 50vh;
+                min-height: 400px;
+                order: 2;
+                z-index: 1;
+            }
+
+            .hero-image-left img {
+                object-position: left center;
             }
 
             .hero-content-servicios {
+                order: 1;
+                width: 100%;
                 max-width: 100%;
                 text-align: center;
-                padding: 0 5%;
+                padding: 40px 5%;
+                margin: 0;
+                align-items: center;
+            }
+
+            .hero-title-servicios {
+                text-align: center;
+            }
+
+            .hero-subtitle-servicios {
+                text-align: center;
+            }
+
+            .hero-image-right {
+                height: auto;
+                position: relative;
+                min-height: auto;
+            }
+            
+            .hero-image-right img {
+                object-fit: contain;
+                max-height: 60vh;
+                width: 100%;
+                height: auto;
             }
 
             .imagen-bg {
@@ -430,13 +626,88 @@
             }
 
             .servicios-adicionales {
-                padding: 50px 0;
+                padding: 50px 0 10px 0;
             }
 
             .content-box {
                 padding: 30px 20px;
             }
+           /* aún menos espacio en móvil */
+           .servicio-extra { padding: 20px 0 4px; }
         }
+
+        /* Imagen pluma en móvil, entre cards */
+.pen-mobile { display: none; }
+
+@media (max-width: 991.98px) {
+  /* ocultar la imagen grande derecha en móvil */
+  .hero-image-right-wrapper, .hero-image-right { display: none !important; }
+
+  .pen-mobile {
+    display: block;
+    width: 100vw;          /* tamaño moderado */
+    max-width: 1000px;
+    margin: 10px -12px 20px auto; /* empuja a la orilla derecha (ajusta -12px si ves borde) */
+  }
+  .pen-mobile img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* DESTACADOS: imagen arriba a pantalla completa y servicios abajo */
+  .servicios-destacados {
+    display: block;
+    padding: 0;                 /* sin padding para que la imagen llene */
+    background: #edf4f2;        /* fondo neutro debajo de la imagen */
+  }
+
+  .servicios-destacados .imagen-lateral {
+    position: relative;         /* saca del absoluto */
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: 85vh;               /* casi pantalla completa */
+    max-height: 100svh;         /* soporta iOS/Android barras dinámicas */
+    min-height: 70vh;
+    clip-path: none;            /* sin recortes */
+    overflow: hidden;
+  }
+
+  .servicios-destacados .imagen-lateral img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;          /* llena sin deformar */
+    object-position: center;
+    transform: none;
+    filter: brightness(90%);
+  }
+
+  .servicios-destacados .contenido-servicios {
+    width: 100%;
+    padding: 20px 16px 32px;    /* servicios abajo con aire */
+  }
+
+  .servicios-destacados .contenido-servicios .servicio-card {
+    padding: 24px 20px;
+    margin: 12px 0;
+    transform: none !important; /* quitar traslapes de desktop */
+  }
+
+  .servicios-destacados .contenido-servicios .card-uno,
+  .servicios-destacados .contenido-servicios .card-dos {
+    transform: none !important;
+    z-index: 1;
+  }
+}
+
+.servicio-card,
+.servicios-adicionales .servicio-item,
+.servicio-extra .servicio-item {
+  background: #fff;
+  border-left: none !important;
+}
     </style>
 </head>
 <body>
@@ -472,123 +743,167 @@
 
     <!-- HERO SECTION -->
     <section class="hero-servicios">
+        <!-- Imagen a la izquierda -->
+        <div class="hero-image-left">
+            <img src="img/portadaServicios.png" alt="Arquitectura moderna">
+        </div>
+        
+        <!-- Contenido a la derecha -->
         <div class="hero-content-servicios">
-            <h1 class="hero-title-servicios">IT ALL BEGINS<br>WITH AN IDEA</h1>
-            <p class="hero-subtitle-servicios">Donde la creatividad se encuentra con la funcionalidad,<br>nacen nuevas posibilidades.</p>
+            <p class="hero-subtitle-servicios">Donde la creatividad se encuentra con<br>la funcionalidad,nacen nuevas posibilidades</p>
             <a href="#servicios" class="btn-conoce-mas">Conoce más</a>
+            <h1 class="hero-title-servicios">IT ALL BEGINS<br>WITH AN IDEA</h1>
         </div>
     </section>
 
     <!-- SERVICIOS PRINCIPALES -->
     <section class="servicios-section" id="servicios">
+        <div class="container-fluid px-0">
+            <div class="row g-0">
+                <!-- Columna izquierda: Servicios (70%) -->
+                <div class="col-lg-7">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-servicio">
+                                <div class="servicio-card">
+                                    <h3 class="servicio-title">Consultoría en Desarrollo<br>de Proyectos Inmobiliarios.</h3>
+                                    <p class="servicio-description">Asesoría integral desde la conceptualización del proyecto hasta su ejecución.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-servicio">
+                                <div class="servicio-card">
+                                    <h3 class="servicio-title">Gestión de Inversores.</h3>
+                                    <p class="servicio-description">Atracción y administración de inversionistas para proyectos inmobiliarios.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-servicio">
+                                <div class="servicio-card">
+                                    <h3 class="servicio-title">Estudios de Impacto<br>Ambiental–de tránsito.</h3>
+                                    <p class="servicio-description">Análisis del impacto ambiental y estudios de tráfico cumpliendo con las normativas locales.</p>
+                                </div>
+                            </div>
+
+                            <!-- Imagen pluma entre cards (solo móvil) -->
+                            <div class="col-12 d-lg-none">
+                                <div class="pen-mobile">
+                                    <img src="img/pluma.png" alt="Pluma servicios">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-servicio">
+                                <div class="servicio-card">
+                                    <h3 class="servicio-title">Análisis de pre–viabilidad<br>financiera.</h3>
+                                    <p class="servicio-description">Pre-Evaluación financiera, técnica y de mercado para asegurar el éxito del desarrollo.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-servicio">
+                                <div class="servicio-card">
+                                    <h3 class="servicio-title">Gestión de Financiamiento.</h3>
+                                    <p class="servicio-description">Asesoramiento en la obtención de créditos, financiamiento y estructuración financiera.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Imagen grande (30%) -->
+                <div class="col-lg-5 p-0 m-0 d-none d-lg-block">
+                    <div class="hero-image-right w-100 h-100">
+                        <img src="img/pluma.png" alt="Imagen servicios">
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    <!-- Sección de Servicios Adicionales -->
+    <section class="servicios-destacados">
+        <div class="imagen-lateral">
+            <img src="img/grua2.png" alt="Imagen de servicios adicionales">
+        </div>
+
+        <div class="contenido-servicios">
+            <div class="servicio-card card-uno">
+                <h3 class="servicio-title">Planeación Urbana y Diseño<br>Arquitectónico.</h3>
+                <p class="servicio-description">Desarrollo de propuestas arquitectónicas y <br>urbanísticas que maximicen <br>el uso del espacio.</p>
+            </div>
+
+            <div class="servicio-card card-dos">
+                <h3 class="servicio-title">Proyectos de Ingeniería y<br>Construcción.</h3>
+                <p class="servicio-description">Dirección y supervisión de obras,<br>incluyendo la contratación de proveedores y <br> constructores.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SERVICIOS ADICIONALES -->
+    <section class="servicios-adicionales">
         <div class="container">
-            <div class="row">
-                <!-- Servicio 1 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/pluma.png" alt="Consultoría" class="servicio-icon">
-                        <h3 class="servicio-title">Consultoría en Desarrollo<br>de Proyectos Inmobiliarios.</h3>
-                        <p class="servicio-description">Asesoría integral desde la conceptualización del proyecto hasta su ejecución.</p>
-                    </div>
-                </div>
-
-                <!-- Servicio 2 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/inversion.png" alt="Gestión" class="servicio-icon">
-                        <h3 class="servicio-title">Gestión de Inversores.</h3>
-                        <p class="servicio-description">Atracción y administración de inversionistas para proyectos inmobiliarios.</p>
-                    </div>
-                </div>
-
-                <!-- Servicio 3 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/impacto.png" alt="Impacto" class="servicio-icon">
-                        <h3 class="servicio-title">Estudios de Impacto<br>Ambiental–de tránsito.</h3>
-                        <p class="servicio-description">Análisis del impacto ambiental y estudios de tráfico cumpliendo con las normativas locales.</p>
-                    </div>
-                </div>
-
-                <!-- Servicio 4 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/inversion.png" alt="Análisis" class="servicio-icon">
-                        <h3 class="servicio-title">Análisis de pre–viabilidad<br>financiera.</h3>
-                        <p class="servicio-description">Pre-Evaluación financiera, técnica y de mercado para asegurar el éxito del desarrollo.</p>
-                    </div>
-                </div>
-
-                <!-- Servicio 5 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/inversion.png" alt="Financiamiento" class="servicio-icon">
-                        <h3 class="servicio-title">Gestión de Financiamiento.</h3>
-                        <p class="servicio-description">Asesoramiento en la obtención de créditos, financiamiento y estructuración financiera.</p>
-                    </div>
-                </div>
-
-                <!-- Servicio 6 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/denver.png" alt="Urbano" class="servicio-icon">
-                        <h3 class="servicio-title">Planeación Urbana y Diseño<br>Arquitectónico.</h3>
-                        <p class="servicio-description">Desarrollo de propuestas arquitectónicas y urbanísticas que maximicen el uso del espacio.</p>
-                    </div>
-                </div>
-
-                <!-- Servicio 7 -->
-                <div class="col-lg-6 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/gancho.png" alt="Ingeniería" class="servicio-icon">
-                        <h3 class="servicio-title">Proyectos de Ingeniería y<br>Construcción.</h3>
-                        <p class="servicio-description">Dirección y supervisión de obras, incluyendo la contratación de proveedores y constructores.</p>
-                    </div>
-                </div>
-
-                <!-- Servicio 8 -->
-                <div class="col-lg-6 col-md-6">
-                    <div class="servicio-card">
-                        <img src="img/gancho.png" alt="360" class="servicio-icon">
+            <div class="layout">
+                <!-- 4 servicios a la izquierda -->
+                <div class="wrap-servicios">
+                    <div class="servicio-item">
                         <h3 class="servicio-title">Gestión 360</h3>
                         <p class="servicio-description">Con sede en Guadalajara, contamos con una red de aliados comerciales que nos ayudan a gestionar cada aspecto para un desarrollo inmobiliario.</p>
                     </div>
+                    <div class="servicio-item">
+                        <h3 class="servicio-title">Administración de Propiedades</h3>
+                        <p class="servicio-description">Gestión integral de inmuebles, incluyendo mantenimiento, arrendamiento y cobro de rentas.</p>
+                    </div>
+                    <div class="servicio-item">
+                        <h3 class="servicio-title">Asesoría Jurídica</h3>
+                        <p class="servicio-description">Servicios legales especializados en contratos de compra-venta, arrendamiento y regularización de propiedades.</p>
+                    </div>
+                    <div class="servicio-item">
+                        <h3 class="servicio-title">Evaluación y Tasación de Propiedades + Opiniones de valor</h3>
+                        <p class="servicio-description">Valoración de terrenos y construcciones para el correcto posicionamiento en el mercado.</p>
+                    </div>
+                    <!-- Imagen edificio (en desktop a la derecha; en móvil queda al final centrada) -->
+                    <div class="edificio-image-right d-lg-none mt-3">
+                        <img src="img/edificio.png" alt="Edificio">
+                    </div>
+                </div>
+                <!-- Imagen derecha solo desktop -->
+                <div class="edificio-image-right d-none d-lg-block">
+                    <img src="img/edificio.png" alt="Edificio">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICIOS ADICIONALES -->
-    <section class="servicios-adicionales">
-        <div class="container">
-            <h2 class="section-title">SERVICIOS ADICIONALES</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="servicio-item">
-                        <h3 class="servicio-item-title">Administración de Propiedades</h3>
-                        <p class="servicio-item-description">Gestión integral de inmuebles, incluyendo mantenimiento, arrendamiento y cobro de rentas.</p>
+    <!-- Sección separada para el 5° servicio restante -->
+    <section class="servicio-extra" style="background: #edf4f2;">
+        <div class="container-fluid px-0">
+            <div class="row g-0 align-items-center">
+                <!-- Contenido (aparece primero en móvil, a la derecha en escritorio) -->
+                <div class="col-12 col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center px-4 px-lg-5 py-5">
+                    <div class="servicio-item" style="background:#edf4f2;border-left:none;padding:40px;max-width:900px;width:100%;">
+                        <h3 class="servicio-title text-center">Comercialización de Inmuebles</h3>
+                        <p class="servicio-description text-center">Estrategias de marketing, ventas y promoción de los desarrollos inmobiliarios.</p>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="servicio-item">
-                        <h3 class="servicio-item-title">Asesoría Jurídica</h3>
-                        <p class="servicio-item-description">Servicios legales especializados en contratos de compra-venta, arrendamiento, y regularización de propiedades.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="servicio-item">
-                        <h3 class="servicio-item-title">Evaluación y Tasación de Propiedades + Opiniones de valor</h3>
-                        <p class="servicio-item-description">Valoración de terrenos y construcciones para el correcto posicionamiento en el mercado.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="servicio-item">
-                        <h3 class="servicio-item-title">Comercialización de Inmuebles</h3>
-                        <p class="servicio-item-description">Estrategias de marketing, ventas y promoción de los desarrollos inmobiliarios.</p>
-                    </div>
+
+                <!-- Imagen (grande en escritorio a la izquierda; en móvil queda abajo, full-width sin márgenes) -->
+                <div class="col-12 col-lg-6 order-2 order-lg-1 px-0">
+                    <img src="img/edificios.png" alt="Edificios" style="display:block;width:100%;height:100%;min-height:520px;object-fit:cover;">
                 </div>
             </div>
         </div>
+
+        <style>
+            /* Asegura que en móvil la imagen ocupe todo el ancho sin márgenes y que la tarjeta luzca igual que el fondo */
+            @media (max-width: 991.98px) {
+                .servicio-extra .servicio-item { padding: 24px 16px; }
+                .servicio-extra img { min-height: auto; height: auto; object-fit: contain; }
+            }
+            @media (min-width: 992px) {
+                .servicio-extra img { min-height: 520px; }
+            }
+        </style>
     </section>
 
     <!-- FOOTER -->
